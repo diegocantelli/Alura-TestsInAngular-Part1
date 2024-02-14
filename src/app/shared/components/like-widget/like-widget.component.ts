@@ -20,7 +20,7 @@ export class LikeWidgetComponent implements OnInit{
     }
   };
 
-  public Like():void {
+  public like():void {
     this.liked.emit();
   }
 }
