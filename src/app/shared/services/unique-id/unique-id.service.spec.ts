@@ -30,7 +30,8 @@ describe(UniqueIdService.name, () => {
   });
 
   it(`#${UniqueIdService.prototype.generateUniqueIdWithPrefix.name} should throw Error when called`, () => {
-    expect(() => service.generateUniqueIdWithPrefix(null)).toThrow();
+    expect(() => service.generateUniqueIdWithPrefix(null))
+      .withContext(`Empty value: null`).toThrow();
     expect(() => service.generateUniqueIdWithPrefix('')).toThrow();
     expect(() => service.generateUniqueIdWithPrefix(undefined)).toThrow();
   })
