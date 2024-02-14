@@ -1,8 +1,8 @@
-<div class="like-widget-container" (click)="like()">
+<div class="like-widget-container" (click)="like()" (keyup.enter)="like()">
   <!-- <fa-icon
     [icon]="fonts.faThumbsUp">
   </fa-icon> -->
-  <span class="like-counter">
+  <span class="like-counter" [attr.id]="id">
     {{likes}}
   </span>
 </div>
