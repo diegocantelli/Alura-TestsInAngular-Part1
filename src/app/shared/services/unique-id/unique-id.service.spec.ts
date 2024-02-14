@@ -3,6 +3,8 @@ import { UniqueIdService } from "./unique-id.service"
 describe(UniqueIdService.name, () => {
 
   let service: UniqueIdService = null;
+
+  //Tem como papel principal garantir que cada chamada à função it tenha seu próprio conjunto de dados de testes.
   beforeEach(() => {
     service = new UniqueIdService();
   });
@@ -25,5 +27,11 @@ describe(UniqueIdService.name, () => {
     service.generateUniqueIdWithPrefix('app-')
     service.generateUniqueIdWithPrefix('app-')
     expect(service.getNumberOfGeneratedUniqueIds()).toBe(2);
+  });
+
+  it(`#${UniqueIdService.prototype.generateUniqueIdWithPrefix.name} should throw Error when called`, () => {
+    expect(() => service.generateUniqueIdWithPrefix(null)).toThrow();
+    expect(() => service.generateUniqueIdWithPrefix('')).toThrow();
+    expect(() => service.generateUniqueIdWithPrefix(undefined)).toThrow();
   })
 })
