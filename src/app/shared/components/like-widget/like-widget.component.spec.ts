@@ -31,12 +31,13 @@ describe(LikeWidgetComponent.name, () => {
     expect(instance.id).toBe(someId);
   })
 
-  it(`${LikeWidgetComponent.prototype.likes} should trigger emission when called`, () => {
+  it(`${LikeWidgetComponent.prototype.likes} should trigger emission when called`, done => {
     fixture.detectChanges()
 
     // o subscribe precisa ser feito antes da chamada do metodo que dispara o evento
     instance.liked.subscribe(() => {
       expect(true).toBe(true)
+      done()
     });
 
     instance.like();
