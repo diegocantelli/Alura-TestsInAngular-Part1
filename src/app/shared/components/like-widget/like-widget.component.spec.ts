@@ -30,4 +30,15 @@ describe(LikeWidgetComponent.name, () => {
     fixture.detectChanges(); //dispara o mecanismo de change detection e dispara o lifecicle hook ngOnInit do componente
     expect(instance.id).toBe(someId);
   })
+
+  it(`${LikeWidgetComponent.prototype.likes} should trigger emission when called`, () => {
+    fixture.detectChanges()
+
+    // o subscribe precisa ser feito antes da chamada do metodo que dispara o evento
+    instance.liked.subscribe(() => {
+      expect(true).toBe(true)
+    });
+
+    instance.like();
+  })
 })
