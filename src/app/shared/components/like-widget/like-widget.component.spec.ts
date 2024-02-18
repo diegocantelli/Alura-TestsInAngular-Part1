@@ -32,7 +32,7 @@ describe(LikeWidgetComponent.name, () => {
   })
 
   it(`${LikeWidgetComponent.prototype.likes} should trigger emission when called`, () => {
-    spyOn(instance.liked, 'emit') //objeto e metodo do objeto a ser 'espionado'
+    spyOn(instance.liked, 'emit') //objeto e metodo do objeto a ser 'espionado'. O metodo emit se tornara uma instancia de spy
     fixture.detectChanges()
     instance.like()
     expect(instance.liked.emit).toHaveBeenCalled()
