@@ -31,15 +31,10 @@ describe(LikeWidgetComponent.name, () => {
     expect(instance.id).toBe(someId);
   })
 
-  it(`${LikeWidgetComponent.prototype.likes} should trigger emission when called`, done => {
+  it(`${LikeWidgetComponent.prototype.likes} should trigger emission when called`, () => {
+    spyOn(instance.liked, 'emit') //objeto e metodo do objeto a ser 'espionado'
     fixture.detectChanges()
-
-    // o subscribe precisa ser feito antes da chamada do metodo que dispara o evento
-    instance.liked.subscribe(() => {
-      expect(true).toBe(true)
-      done()
-    });
-
-    instance.like();
+    instance.like()
+    expect(instance.liked.emit).toHaveBeenCalled()
   })
 })
